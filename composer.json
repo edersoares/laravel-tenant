@@ -1,0 +1,17 @@
+{
+    "name": "edersoares/laravel-tenant",
+    "description": "Package to control the connection with multiple databases in Laravel application",
+    "version": "0.1.0",
+    "autoload": {
+        "psr-4": {
+            "EderSoares\\Laravel\\Tenant\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EderSoares\\Laravel\\Tenant\\Providers\\TenantServiceProvider"
+            ]
+        }
+    }
+}
