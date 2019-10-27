@@ -1,7 +1,17 @@
 {
     "name": "edersoares/laravel-tenant",
-    "description": "Package to control the connection with multiple databases in Laravel application",
     "version": "0.1.0",
+    "description": "Package to control the connection with multiple databases in Laravel application",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eder Soares",
+            "email": "edersoares@me.com",
+            "homepage": "https://edersoares.me",
+            "role": "Developer"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "EderSoares\\Laravel\\Tenant\\": "src/"
@@ -13,5 +23,7 @@
                 "EderSoares\\Laravel\\Tenant\\Providers\\TenantServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
