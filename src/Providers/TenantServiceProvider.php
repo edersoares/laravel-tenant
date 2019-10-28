@@ -19,8 +19,9 @@ class TenantServiceProvider extends LaravelServiceProvider
      * @var array
      */
     public $bindings = [
+        Tenant::class => TenantModel::class,
+        TenantManager::class => TenantSwapper::class,
         TenantRepository::class => TenantEloquentRepository::class,
-        TenantManager::class => TenantSwapper::class
     ];
 
     /**
@@ -49,9 +50,9 @@ class TenantServiceProvider extends LaravelServiceProvider
     protected function prepareTenantQueue()
     {
         $this->app['queue']->createPayloadUsing(function () {
-            $tenant = $this->app->get(Tenant::class);
-
-            return $tenant ? ['tenant' => $tenant] : [];
+            return [
+                'tenant' => $this->app->get(Tenant::class),
+            ];
         });
 
         $this->app['events']->listen(JobProcessing::class, function ($event) {
