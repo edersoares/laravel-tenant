@@ -2,6 +2,12 @@
 
 namespace EderSoares\Laravel\Tenant\Providers;
 
+use EderSoares\Laravel\Tenant\Console\Commands\DatabaseCreateCommand;
+use EderSoares\Laravel\Tenant\Console\Commands\DatabaseDropCommand;
+use EderSoares\Laravel\Tenant\Console\Commands\DatabaseListCommand;
+use EderSoares\Laravel\Tenant\Console\Commands\TenantCreateCommand;
+use EderSoares\Laravel\Tenant\Console\Commands\TenantDropCommand;
+use EderSoares\Laravel\Tenant\Console\Commands\TenantListCommand;
 use EderSoares\Laravel\Tenant\Contracts\Tenant;
 use EderSoares\Laravel\Tenant\Contracts\TenantManager;
 use EderSoares\Laravel\Tenant\Contracts\TenantRepository;
@@ -29,7 +35,7 @@ class TenantServiceProvider extends LaravelServiceProvider
      *
      * @return void
      */
-    protected function createTenantConnection()
+    private function createTenantConnection()
     {
         $config = $this->app['config'];
 
@@ -47,7 +53,7 @@ class TenantServiceProvider extends LaravelServiceProvider
      *
      * @return void
      */
-    protected function prepareTenantQueue()
+    private function prepareTenantQueue()
     {
         $this->app['queue']->createPayloadUsing(function () {
             return [
@@ -69,6 +75,25 @@ class TenantServiceProvider extends LaravelServiceProvider
     }
 
     /**
+     * Register console commands.
+     *
+     * @return void
+     */
+    private function registerCommands()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                DatabaseCreateCommand::class,
+                DatabaseDropCommand::class,
+                DatabaseListCommand::class,
+                TenantCreateCommand::class,
+                TenantDropCommand::class,
+                TenantListCommand::class,
+            ]);
+        }
+    }
+
+    /**
      * Bootstrap services.
      *
      * @return void
@@ -76,9 +101,9 @@ class TenantServiceProvider extends LaravelServiceProvider
     public function boot()
     {
         $this->createTenantConnection();
-
         $this->prepareTenantQueue();
-
+        $this->registerCommands();
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/tenant.php', 'tenant');
     }
 }

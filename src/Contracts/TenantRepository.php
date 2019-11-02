@@ -7,6 +7,37 @@ use Illuminate\Support\Collection;
 interface TenantRepository
 {
     /**
+     * Create tenant.
+     *
+     * @param string $name
+     * @param string $slug
+     * @param string $host
+     * @param array  $database
+     * @param bool   $active
+     *
+     * @return Tenant
+     */
+    public function create($name, $slug, $host, $database, $active = true);
+
+    /**
+     * Delete tenant.
+     *
+     * @param int $id
+     *
+     * @return bool
+     */
+    public function delete($id);
+
+    /**
+     * Fetch tenant.
+     *
+     * @param int $id
+     *
+     * @return Tenant
+     */
+    public function fetch($id);
+
+    /**
      * Indicate if tenant exists.
      *
      * @param string $tenant

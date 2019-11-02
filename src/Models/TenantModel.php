@@ -14,6 +14,20 @@ class TenantModel extends Model implements Tenant
     protected $table = 'tenants';
 
     /**
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'slug', 'host', 'database', 'active',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'database' => 'json',
+    ];
+
+    /**
      * The "booting" method of the model.
      *
      * @return void
@@ -48,6 +62,6 @@ class TenantModel extends Model implements Tenant
      */
     public function getDatabaseConnection()
     {
-        return json_decode($this->database, true);
+        return $this->database;
     }
 }

@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Collection;
 class TenantEloquentRepository implements TenantRepository
 {
     /**
+     * New query builder.
+     *
      * @return Builder
      */
     protected function newQuery()
@@ -19,6 +21,60 @@ class TenantEloquentRepository implements TenantRepository
     }
 
     /**
+     * Create tenant.
+     *
+     * @param string $name
+     * @param string $slug
+     * @param string $host
+     * @param array  $database
+     * @param bool   $active
+     *
+     * @return Tenant
+     */
+    public function create($name, $slug, $host, $database, $active = true)
+    {
+        /** @var Tenant $tenant */
+        $tenant = $this->newQuery()->create([
+            'name' => $name,
+            'slug' => $slug,
+            'host' => $host,
+            'database' => json_encode($database),
+            'active' => $active,
+        ]);
+
+        return $tenant;
+    }
+
+    /**
+     * Delete tenant.
+     *
+     * @param int $id
+     *
+     * @return bool
+     */
+    public function delete($id)
+    {
+        return boolval($this->newQuery()->whereKey($id)->delete());
+    }
+
+    /**
+     * Fetch tenant.
+     *
+     * @param int $id
+     *
+     * @return Tenant
+     */
+    public function fetch($id)
+    {
+        /** @var Tenant $tenant */
+        $tenant = $this->newQuery()->find($id);
+
+        return $tenant;
+    }
+
+    /**
+     * Indicate if tenant exists.
+     *
      * @param string $tenant
      *
      * @return bool
@@ -32,6 +88,8 @@ class TenantEloquentRepository implements TenantRepository
     }
 
     /**
+     * Return tenant.
+     *
      * @param string $tenant
      *
      * @return Tenant
@@ -45,6 +103,8 @@ class TenantEloquentRepository implements TenantRepository
     }
 
     /**
+     * Return tenants.
+     *
      * @param array $tenants
      *
      * @return Collection
@@ -52,7 +112,7 @@ class TenantEloquentRepository implements TenantRepository
     public function getTenants(array $tenants = [])
     {
         return $this->newQuery()->when($tenants, function ($query) use ($tenants) {
-            $query->whereIn('slug', $tenants);
-        })->get();
+            $query->whereIn('slug', $tenants)->orWhereIn('host', $tenants);
+        })->orderBy('id')->get();
     }
 }
