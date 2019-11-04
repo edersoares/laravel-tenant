@@ -34,6 +34,8 @@ class DatabaseDropCommand extends Command
         $manager = $manager->getDoctrineSchemaManager();
         $databases = $manager->listDatabases();
 
+        $databases = collect($databases)->sort()->values()->toArray();
+
         if (empty($name)) {
             $name = $this->choice('Drop which database?', $databases);
         }
