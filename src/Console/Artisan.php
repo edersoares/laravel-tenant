@@ -105,8 +105,10 @@ class Artisan extends Application
     /**
      * {@inheritdoc}
      */
-    public function run(InputInterface $input = null, OutputInterface $output = null)
-    {
+    public function run(
+        InputInterface $input = null,
+        OutputInterface $output = null
+    ) {
         try {
             // Makes ArgvInput::getFirstArgument() able to distinguish an option from an argument.
             $input->bind($this->getDefinition());

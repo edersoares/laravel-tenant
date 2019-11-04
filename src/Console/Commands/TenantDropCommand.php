@@ -26,7 +26,7 @@ class TenantDropCommand extends Command
      *
      * @param TenantRepository $repository
      *
-     * @return mixed
+     * @return void
      */
     public function handle(TenantRepository $repository) {
         $id = $this->argument('id');

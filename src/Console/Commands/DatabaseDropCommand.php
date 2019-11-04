@@ -26,7 +26,7 @@ class DatabaseDropCommand extends Command
      *
      * @param DatabaseManager $manager
      *
-     * @return mixed
+     * @return void
      */
     public function handle(DatabaseManager $manager)
     {
@@ -44,10 +44,12 @@ class DatabaseDropCommand extends Command
             return;
         }
 
-        if ($this->confirm("Confirm drop database {$name}?")) {
-            $manager->dropDatabase($name);
-
-            $this->info('Database dropped.');
+        if (!$this->confirm("Confirm drop database {$name}?")) {
+            return;
         }
+
+        $manager->dropDatabase($name);
+
+        $this->info('Database dropped.');
     }
 }

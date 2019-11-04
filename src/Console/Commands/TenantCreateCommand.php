@@ -33,6 +33,16 @@ class TenantCreateCommand extends Command
     }
 
     /**
+     * @param string $slug
+     *
+     * @return string
+     */
+    protected function getPossibleHost($slug)
+    {
+        return config('tenant.host_prefix') . $slug . config('tenant.host_suffix');
+    }
+
+    /**
      * Execute the console command.
      *
      * @param DatabaseManager  $manager
@@ -54,8 +64,10 @@ class TenantCreateCommand extends Command
 
         $name = $this->ask('What\'s name?');
         $slug = $this->ask('What\'s slug?', Str::slug($name));
-        $host = $this->ask('What\'s host?', config('tenant.host_prefix') . $slug . config('tenant.host_suffix'));
-        $choose = $this->choice('Which database?', ['new database', 'choose a existing database'], 'new database');
+        $host = $this->ask('What\'s host?', $this->getPossibleHost($slug));
+        $choose = $this->choice('Which database?', [
+            'new database', 'choose a existing database'
+        ], 'new database');
 
         if ($choose === 'new database') {
             $database = $this->ask('What\'s database name?', Str::slug($slug, '_'));

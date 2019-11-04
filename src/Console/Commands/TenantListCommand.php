@@ -5,7 +5,6 @@ namespace EderSoares\Laravel\Tenant\Console\Commands;
 use EderSoares\Laravel\Tenant\Contracts\TenantRepository;
 use EderSoares\Laravel\Tenant\Models\TenantModel;
 use Illuminate\Console\Command;
-use Illuminate\Database\DatabaseManager;
 
 class TenantListCommand extends Command
 {
@@ -26,13 +25,11 @@ class TenantListCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param DatabaseManager  $manager
      * @param TenantRepository $repository
      *
      * @return void
      */
     public function handle(
-        DatabaseManager $manager,
         TenantRepository $repository
     ) {
         $data = $repository->getTenants()->map(function (TenantModel $tenant) {
