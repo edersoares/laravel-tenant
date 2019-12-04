@@ -1,13 +1,13 @@
 <?php
 
-namespace EderSoares\Laravel\Tenant\Http\Middlewares;
+namespace EderSoares\Laravel\Tenant\Http\Middleware;
 
 use Closure;
 use EderSoares\Laravel\Tenant\Contracts\TenantRepository;
 use EderSoares\Laravel\Tenant\Contracts\TenantManager;
 use Illuminate\Http\Request;
 
-class ConnectRequestTenant
+class ConnectTenant
 {
     /**
      * @var Closure
