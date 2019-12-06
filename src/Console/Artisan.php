@@ -88,6 +88,10 @@ class Artisan extends Application
 
         if ($specificTenants) {
             $output->writeln('<info>Running tenants..</info>');
+
+            collect($specificTenants)->each(function ($tenant) use ($output) {
+                $output->writeln("  {$tenant}");
+            });
         } else {
             $output->writeln('<info>Running all tenants..</info>');
         }
@@ -123,10 +127,6 @@ class Artisan extends Application
         }
 
         if ($specificTenants = $input->getOption('tenant')) {
-            collect($specificTenants)->each(function ($tenant) use ($output) {
-                $output->writeln("  {$tenant}");
-            });
-
             $this->runTenants($input, $output, $specificTenants);
 
             return;
