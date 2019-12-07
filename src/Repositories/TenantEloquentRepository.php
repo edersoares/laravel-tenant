@@ -23,24 +23,14 @@ class TenantEloquentRepository implements TenantRepository
     /**
      * Create tenant.
      *
-     * @param string $name
-     * @param string $slug
-     * @param string $host
-     * @param array  $database
-     * @param bool   $active
+     * @param array $attributes
      *
      * @return Tenant
      */
-    public function create($name, $slug, $host, $database, $active = true)
+    public function create($attributes)
     {
         /** @var Tenant $tenant */
-        $tenant = $this->newQuery()->create([
-            'name' => $name,
-            'slug' => $slug,
-            'host' => $host,
-            'database' => json_encode($database),
-            'active' => $active,
-        ]);
+        $tenant = $this->newQuery()->create($attributes);
 
         return $tenant;
     }

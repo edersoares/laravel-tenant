@@ -9,33 +9,29 @@ interface TenantRepository
     /**
      * Create tenant.
      *
-     * @param string $name
-     * @param string $slug
-     * @param string $host
-     * @param array  $database
-     * @param bool   $active
+     * @param array $attributes
      *
      * @return Tenant
      */
-    public function create($name, $slug, $host, $database, $active = true);
+    public function create($attributes);
 
     /**
      * Delete tenant.
      *
-     * @param int $id
+     * @param int $identifier
      *
      * @return bool
      */
-    public function delete($id);
+    public function delete($identifier);
 
     /**
      * Fetch tenant.
      *
-     * @param int $id
+     * @param int $identifier
      *
      * @return Tenant
      */
-    public function fetch($id);
+    public function fetch($identifier);
 
     /**
      * Indicate if tenant exists.
