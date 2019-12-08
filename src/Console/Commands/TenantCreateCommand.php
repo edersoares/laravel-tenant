@@ -93,7 +93,12 @@ class TenantCreateCommand extends Command
         }
 
         try {
-            $repository->create($name, $slug, $host, $config);
+            $repository->create([
+                'name' => $name,
+                'slug' => $slug,
+                'host' => $host,
+                'database' => $config,
+            ]);
         } catch (Throwable $throwable) {
             $this->error('Tenant cannot be created.');
 
