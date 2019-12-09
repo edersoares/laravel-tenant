@@ -34,22 +34,46 @@ class TenantSwapper implements TenantManager
      *
      * @return void
      */
-    public function swap(Tenant $tenant)
+    private function overrideConnections(Tenant $tenant)
     {
         $config = $this->container['config'];
 
-        $connections = $config->get('database.connections');
-
-        $connections[$tenant->getIdentifier()] = $tenant->getDatabaseConnection();
-
-        $this->container['config']->set([
-            'database.connections' => $connections,
+        $config->set([
+            'database.connections' => array_merge(
+                $config->get('database.connections'),
+                $this->getTenantConnection($tenant)
+            ),
+            'telescope.storage.database.connection' => $tenant->getIdentifier(),
         ]);
+    }
+
+    /**
+     * @param Tenant $tenant
+     *
+     * @return array
+     */
+    private function getTenantConnection(Tenant $tenant)
+    {
+        return [
+            $tenant->getIdentifier() => $tenant->getDatabaseConnection(),
+        ];
+    }
+
+    /**
+     * @param Tenant $tenant
+     *
+     * @return void
+     */
+    public function swap(Tenant $tenant)
+    {
+        $this->overrideConnections($tenant);
 
         $this->container->bind(Tenant::class, function () use ($tenant) {
             return $tenant;
         });
 
-        $this->manager->setDefaultConnection($tenant->getIdentifier());
+        $this->manager->setDefaultConnection(
+            $tenant->getIdentifier()
+        );
     }
 }
