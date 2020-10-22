@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTenantsTable extends Migration
+class CreateTenantTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateTenantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tenants', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('tenant', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('host')->unique();
-            $table->json('database');
             $table->boolean('active')->default(true);
+            $table->json('database');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateTenantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tenants');
+        Schema::dropIfExists('tenant');
     }
 }
