@@ -1,10 +1,10 @@
 <?php
 
-namespace EderSoares\Laravel\Tenant\Repositories;
+namespace Dex\Laravel\Tenant\Repositories;
 
-use EderSoares\Laravel\Tenant\Contracts\Tenant;
-use EderSoares\Laravel\Tenant\Contracts\TenantRepository;
-use EderSoares\Laravel\Tenant\Models\TenantModel;
+use Dex\Laravel\Tenant\Contracts\Tenant;
+use Dex\Laravel\Tenant\Contracts\TenantRepository;
+use Dex\Laravel\Tenant\Models\TenantModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 

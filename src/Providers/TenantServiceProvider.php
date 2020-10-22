@@ -1,19 +1,19 @@
 <?php
 
-namespace EderSoares\Laravel\Tenant\Providers;
+namespace Dex\Laravel\Tenant\Providers;
 
-use EderSoares\Laravel\Tenant\Console\Commands\DatabaseCreateCommand;
-use EderSoares\Laravel\Tenant\Console\Commands\DatabaseDropCommand;
-use EderSoares\Laravel\Tenant\Console\Commands\DatabaseListCommand;
-use EderSoares\Laravel\Tenant\Console\Commands\TenantCreateCommand;
-use EderSoares\Laravel\Tenant\Console\Commands\TenantDropCommand;
-use EderSoares\Laravel\Tenant\Console\Commands\TenantListCommand;
-use EderSoares\Laravel\Tenant\Contracts\Tenant;
-use EderSoares\Laravel\Tenant\Contracts\TenantManager;
-use EderSoares\Laravel\Tenant\Contracts\TenantRepository;
-use EderSoares\Laravel\Tenant\Managers\TenantSwapper;
-use EderSoares\Laravel\Tenant\Models\TenantModel;
-use EderSoares\Laravel\Tenant\Repositories\TenantEloquentRepository;
+use Dex\Laravel\Tenant\Console\Commands\DatabaseCreateCommand;
+use Dex\Laravel\Tenant\Console\Commands\DatabaseDropCommand;
+use Dex\Laravel\Tenant\Console\Commands\DatabaseListCommand;
+use Dex\Laravel\Tenant\Console\Commands\TenantCreateCommand;
+use Dex\Laravel\Tenant\Console\Commands\TenantDropCommand;
+use Dex\Laravel\Tenant\Console\Commands\TenantListCommand;
+use Dex\Laravel\Tenant\Contracts\Tenant;
+use Dex\Laravel\Tenant\Contracts\TenantManager;
+use Dex\Laravel\Tenant\Contracts\TenantRepository;
+use Dex\Laravel\Tenant\Managers\TenantSwapper;
+use Dex\Laravel\Tenant\Models\TenantModel;
+use Dex\Laravel\Tenant\Repositories\TenantEloquentRepository;
 use Illuminate\Queue\Events\JobProcessing;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 

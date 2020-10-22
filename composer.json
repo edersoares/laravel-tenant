@@ -14,13 +14,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "EderSoares\\Laravel\\Tenant\\": "src/"
+            "Dex\\Laravel\\Tenant\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "EderSoares\\Laravel\\Tenant\\Providers\\TenantServiceProvider"
+                "Dex\\Laravel\\Tenant\\Providers\\TenantServiceProvider"
             ]
         }
     },

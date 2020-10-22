@@ -1,8 +1,8 @@
 <?php
 
-namespace EderSoares\Laravel\Tenant\Console\Commands;
+namespace Dex\Laravel\Tenant\Console\Commands;
 
-use EderSoares\Laravel\Tenant\Contracts\TenantRepository;
+use Dex\Laravel\Tenant\Contracts\TenantRepository;
 use Illuminate\Console\Command;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Support\Str;

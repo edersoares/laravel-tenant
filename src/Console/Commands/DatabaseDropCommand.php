@@ -1,6 +1,6 @@
 <?php
 
-namespace EderSoares\Laravel\Tenant\Console\Commands;
+namespace Dex\Laravel\Tenant\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\DatabaseManager;

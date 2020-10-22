@@ -1,10 +1,10 @@
 <?php
 
-namespace EderSoares\Laravel\Tenant\Http\Middleware;
+namespace Dex\Laravel\Tenant\Http\Middleware;
 
 use Closure;
-use EderSoares\Laravel\Tenant\Contracts\TenantRepository;
-use EderSoares\Laravel\Tenant\Contracts\TenantManager;
+use Dex\Laravel\Tenant\Contracts\TenantRepository;
+use Dex\Laravel\Tenant\Contracts\TenantManager;
 use Illuminate\Http\Request;
 
 class ConnectTenant

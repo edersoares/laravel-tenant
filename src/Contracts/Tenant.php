@@ -1,6 +1,6 @@
 <?php
 
-namespace EderSoares\Laravel\Tenant\Contracts;
+namespace Dex\Laravel\Tenant\Contracts;
 
 interface Tenant
 {

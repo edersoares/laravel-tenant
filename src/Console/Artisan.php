@@ -1,10 +1,10 @@
 <?php
 
-namespace EderSoares\Laravel\Tenant\Console;
+namespace Dex\Laravel\Tenant\Console;
 
-use EderSoares\Laravel\Tenant\Contracts\Tenant;
-use EderSoares\Laravel\Tenant\Contracts\TenantManager;
-use EderSoares\Laravel\Tenant\Contracts\TenantRepository;
+use Dex\Laravel\Tenant\Contracts\Tenant;
+use Dex\Laravel\Tenant\Contracts\TenantManager;
+use Dex\Laravel\Tenant\Contracts\TenantRepository;
 use Illuminate\Console\Application;
 use Symfony\Component\Console\Exception\ExceptionInterface;
 use Symfony\Component\Console\Input\InputInterface;

@@ -1,9 +1,9 @@
 <?php
 
-namespace EderSoares\Laravel\Tenant\Console\Commands;
+namespace Dex\Laravel\Tenant\Console\Commands;
 
-use EderSoares\Laravel\Tenant\Contracts\TenantRepository;
-use EderSoares\Laravel\Tenant\Models\TenantModel;
+use Dex\Laravel\Tenant\Contracts\TenantRepository;
+use Dex\Laravel\Tenant\Models\TenantModel;
 use Illuminate\Console\Command;
 
 class TenantListCommand extends Command

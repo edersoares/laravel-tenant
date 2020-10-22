@@ -1,9 +1,9 @@
 <?php
 
-namespace EderSoares\Laravel\Tenant\Managers;
+namespace Dex\Laravel\Tenant\Managers;
 
-use EderSoares\Laravel\Tenant\Contracts\Tenant;
-use EderSoares\Laravel\Tenant\Contracts\TenantManager;
+use Dex\Laravel\Tenant\Contracts\Tenant;
+use Dex\Laravel\Tenant\Contracts\TenantManager;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Database\DatabaseManager;
 

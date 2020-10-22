@@ -1,8 +1,8 @@
 <?php
 
-namespace EderSoares\Laravel\Tenant\Models;
+namespace Dex\Laravel\Tenant\Models;
 
-use EderSoares\Laravel\Tenant\Contracts\Tenant;
+use Dex\Laravel\Tenant\Contracts\Tenant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 

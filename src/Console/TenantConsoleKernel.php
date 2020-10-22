@@ -1,6 +1,6 @@
 <?php
 
-namespace EderSoares\Laravel\Tenant\Console;
+namespace Dex\Laravel\Tenant\Console;
 
 use Illuminate\Console\Application;
 
